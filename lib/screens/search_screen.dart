@@ -15,11 +15,11 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreenState extends State<SearchScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
-  
+
   @override
   void initState() {
     // TODO: implement initState
-     _tabController = TabController(length: 2, vsync: this);
+    _tabController = TabController(length: 2, vsync: this);
     super.initState();
   }
 
@@ -29,9 +29,10 @@ class _SearchScreenState extends State<SearchScreen>
     super.dispose();
     _tabController.dispose();
   }
-  
+
   @override
   Widget build(BuildContext context) {
+    final size = AppLayout.getSize(context);
     return Scaffold(
       backgroundColor: Styles.bgColor,
       body: ListView(
@@ -46,7 +47,28 @@ class _SearchScreenState extends State<SearchScreen>
                 Styles.headLineStyle.copyWith(fontSize: AppLayout.getWidth(35)),
           ),
           Gap(AppLayout.getHeight(20)),
-          
+          Container(
+            child: Row(
+              children: [
+                Container(
+                  width: size.width * .44,
+                  padding: EdgeInsets.symmetric(vertical: AppLayout.getHeight(7)),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(
+                      AppLayout.getHeight(50),
+                    ),
+                    color: Colors.white,
+                  ),
+                  child: Center(child: Text('Airline tickets')),
+                ),
+              ],
+            ),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(
+                  AppLayout.getHeight(50),
+                ),
+                color: const Color(0xFFF4F6FD)),
+          ),
         ],
       ),
     );
